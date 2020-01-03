@@ -6,9 +6,13 @@ import { ListaModule } from '../models/lista-item/lista.module';
 })
 export class DeseosService {
 
-  public lista: ListaModule[] = [];
+  public listas: ListaModule[] = [];
 
   constructor() {
-    console.log('DeseosService Inicializado');
+
+    const listaTareas: ListaModule = new ListaModule('Lista tareas');
+    const listaMercado: ListaModule = new ListaModule('Lista mercado');
+
+    this.listas.push(listaTareas, listaMercado);
   }
 }
