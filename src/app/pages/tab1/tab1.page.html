@@ -12,6 +12,7 @@
       *ngFor="let item of deseosService.listas"
       detail
       color="dark"
+      (click)="goToList( item.id )"
     >
       <ion-label>{{ item.titulo }}</ion-label>
     </ion-item>

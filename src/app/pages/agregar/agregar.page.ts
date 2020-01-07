@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { DeseosService } from '../../services/deseos.service';
 
 @Component({
   selector: 'app-agregar',
@@ -7,7 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AgregarPage implements OnInit {
 
-  constructor() { }
+  list: any;
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private deseosService: DeseosService
+  ) {
+    this.activatedRoute.params.subscribe(
+      (data) => {
+        this.list = this.deseosService.getList(data.id);
+      }
+    );
+  }
 
   ngOnInit() {
   }

@@ -16,6 +16,11 @@ export class Tab1Page {
     private alertController: AlertController
   ) {}
 
+  goToList(id: string | number) {
+    id = id.toString();
+    this.router.navigate(['tabs', 'tab1', 'agregar', id]);
+  }
+
   async addList() {
     // this.router.navigate(['tabs', 'tab1', 'agregar']);
 
@@ -44,7 +49,11 @@ export class Tab1Page {
               return;
             }
 
-            this.deseosService.createList(data.title);
+            const elmLista = this.deseosService.createList(data.title);
+            this.deseosService.saveStorage();
+            if (elmLista) {
+              this.router.navigate(['tabs', 'tab1', 'agregar', elmLista.id]);
+            }
           }
         }
       ]
