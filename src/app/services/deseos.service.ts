@@ -8,11 +8,9 @@ export class DeseosService {
 
   public listas: ListaModule[] = [];
 
-  constructor() {
+  constructor() {}
 
-    const listaTareas: ListaModule = new ListaModule('Lista tareas');
-    const listaMercado: ListaModule = new ListaModule('Lista mercado');
-
-    this.listas.push(listaTareas, listaMercado);
+  createList( title: string ) {
+    this.listas.push( new ListaModule(title) );
   }
 }
