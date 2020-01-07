@@ -32,3 +32,12 @@ ion-list {
 .tab-selected {
   color: #44f6ff !important;
 }
+
+.ion-color-quaternary {
+  --ion-color-base: var(--ion-color-quaternary);
+  --ion-color-base-rgb: var(--ion-color-quaternary-rgb);
+  --ion-color-contrast: var(--ion-color-quaternary-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-quaternary-contrast-rgb);
+  --ion-color-shade: var(--ion-color-quaternary-shade);
+  --ion-color-tint: var(--ion-color-quaternary-tint);
+}
