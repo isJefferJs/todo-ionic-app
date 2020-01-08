@@ -24,6 +24,18 @@ export class DeseosService {
     return newList;
   }
 
+  deleteList( id: string | number) {
+    id = Number(id);
+    this.lists = this.lists.filter(list => list.id !== id);
+    this.saveStorage();
+  }
+
+  modifyList( id: string | number) {
+    //id = Number(id);
+    //this.lists = this.lists.filter(list => list.id !== id);
+    //this.saveStorage();
+  }
+
   saveStorage() {
     localStorage.setItem('data', JSON.stringify(this.lists));
   }
@@ -35,11 +47,5 @@ export class DeseosService {
     } else {
       this.lists = [];
     }
-  }
-
-  deleteList( id: string | number) {
-    id = Number(id);
-    this.lists = this.lists.filter(list => list.id !== id);
-    this.saveStorage();
   }
 }

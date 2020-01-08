@@ -35,7 +35,8 @@
 
   <ion-list>
     <ion-list-header color="dark">
-      <ion-label>Tareas por hacer</ion-label>
+      <ion-label *ngIf="!list.finished">Tareas por hacer</ion-label>
+      <ion-label *ngIf="list.finished">No hay tareas por hacer</ion-label>
     </ion-list-header>
 
     <ion-item-sliding
