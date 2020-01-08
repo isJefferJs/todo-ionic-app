@@ -59,4 +59,8 @@ export class Tab1Page {
 
     await alert.present();
   }
+
+  deleteList( id: string ) {
+    this.deseosService.deleteList( id );
+  }
 }

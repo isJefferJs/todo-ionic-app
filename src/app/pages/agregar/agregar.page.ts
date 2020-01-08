@@ -13,6 +13,7 @@ export class AgregarPage {
 
   public list: ListaModule;
   public itemName: string;
+  public itemDone: boolean;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -32,5 +33,28 @@ export class AgregarPage {
 
     this.itemName = '';
     this.deseosService.saveStorage();
+    this.updateItem( newItem );
+  }
+
+  isDone() {
+    return  !!!this.list.items.filter( i => !i.completed).length
+            && this.list.items.length > 0;
+  }
+
+  updateItem( item: ListaItemModule ) {
+    if (this.isDone()) {
+      this.list.finishedAt = new Date();
+      this.list.finished = true;
+    } else {
+      this.list.finishedAt = null;
+      this.list.finished = false;
+    }
+
+    this.deseosService.saveStorage();
+  }
+
+  deleteItem( item: ListaItemModule ) {
+    this.list.items = this.list.items.filter( i => i.desc !== item.desc);
+    this.updateItem( item );
   }
 }
