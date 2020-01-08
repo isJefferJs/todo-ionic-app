@@ -49,11 +49,9 @@ export class Tab1Page {
               return;
             }
 
-            const elmLista = this.deseosService.createList(data.title);
+            const list = this.deseosService.createList(data.title);
+            this.router.navigate(['tabs', 'tab1', 'agregar', list.id]);
             this.deseosService.saveStorage();
-            if (elmLista) {
-              this.router.navigate(['tabs', 'tab1', 'agregar', elmLista.id]);
-            }
           }
         }
       ]

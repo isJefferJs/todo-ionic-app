@@ -6,42 +6,34 @@ import { ListaModule } from '../models/lista-item/lista.module';
 })
 export class DeseosService {
 
-  public listas: ListaModule[];
+  public lists: ListaModule[];
 
   constructor() {
-    this.listas = [];
+    this.lists = [];
     this.loadStorage();
   }
 
   getList( id: string | number) {
     id = Number(id);
-    const list =  JSON.parse(localStorage.getItem('data'))
-                      .find(data => data.id === id);
-    return list;
+    return this.lists.find((data: ListaModule) => data.id === id);;
   }
 
   createList( title: string ) {
-    try {
-      const elemList: ListaModule = new ListaModule(title);
-      this.listas.push( elemList );
-      return elemList;
-    } catch (error) {
-      console.error('ERROR', error);
-      return false;
-    }
+    const newList: ListaModule = new ListaModule(title);
+    this.lists.push( newList );
+    return newList;
   }
 
   saveStorage() {
-    localStorage.setItem('data', JSON.stringify(this.listas));
+    localStorage.setItem('data', JSON.stringify(this.lists));
   }
 
   loadStorage() {
-
     if (localStorage.getItem('data')
         && localStorage.getItem('data') !== 'null') {
-          this.listas = JSON.parse(localStorage.getItem('data'));
+          this.lists = JSON.parse(localStorage.getItem('data'));
     } else {
-      this.listas = [];
+      this.lists = [];
     }
   }
 }
